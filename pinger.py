@@ -12,7 +12,7 @@ def api_handler(i):
     try:
         begin = datetime.now()
 
-        response = requests.get("https://ctqa.dsc.umich.edu/access/content/public/ok.txt")
+        response = requests.get("https://ctools.umich.edu/access/content/public/ok.txt")
         print "what is in response: " + response.content
 
         end = datetime.now()
