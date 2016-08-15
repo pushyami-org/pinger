@@ -2,7 +2,7 @@ import requests
 import time
 from datetime import datetime
 
-MIME_TYPE_JSON = 'application/json'
+MIME_TYPE_JSON = 'text/plain'
 CONTENT_TYPE = 'Content-type'
 
 
@@ -11,8 +11,8 @@ def api_handler(i):
 
     try:
         begin = datetime.now()
-
-        response = requests.get("https://ctqa.dsc.umich.edu/access/content/public/ok.txt")
+        headers = {CONTENT_TYPE: MIME_TYPE_JSON}
+        response = requests.get("https://ctqa.dsc.umich.edu/access/content/public/ok.txt", headers=headers)
         print "what is in response: " + response.text
 
         end = datetime.now()
