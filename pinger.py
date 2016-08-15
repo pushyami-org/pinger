@@ -5,30 +5,29 @@ from datetime import datetime
 MIME_TYPE_JSON = 'application/json'
 CONTENT_TYPE = 'Content-type'
 
+
 def api_handler(i):
+    response = None
 
-   response = None
+    try:
+        begin = datetime.now()
 
-   try:
-      begin = datetime.now()
-      headers = {CONTENT_TYPE: MIME_TYPE_JSON}
+        response = requests.get("https://ctqa.dsc.umich.edu/access/content/public/ok.txt")
+        print "what is in response: " + response.content
 
-      response = requests.get("https://www.google.com/logos/doodles/2016/2016-doodle-fruit-games-day-8-5666133911797760.3-hp.gif", headers=headers)
-                
-      end = datetime.now()
-      diff = end - begin
-      print str(i) + " execution time: " + str(diff)             
-                
-   except (requests.exceptions.RequestException, Exception) as exception:
-      raise exception
+        end = datetime.now()
+        diff = end - begin
+        print str(i) + " execution time: " + str(diff)
 
-   return response
+    except (requests.exceptions.RequestException, Exception) as exception:
+        raise exception
+
+    return response
 
 
 print 'started at: ' + str(datetime.now())
 
-for i in range(1, 100):
-   api_handler(i)
-   time.sleep(1)
+for i in range(1, 2000):
+    api_handler(i)
 
 print 'ended at: ' + str(datetime.now())
