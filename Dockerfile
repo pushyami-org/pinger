@@ -10,4 +10,4 @@ WORKDIR /app/
 
 COPY . /app/
 
-CMD ["python", "pinger.py"]
+CMD ["python", "computive.py"]
